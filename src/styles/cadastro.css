@@ -1,0 +1,18 @@
+.container{
+    border: 1px solid red;
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.container-cadastro{
+    border: blue 1px solid;
+    width: 100%;
+}
