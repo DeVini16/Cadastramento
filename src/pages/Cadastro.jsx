@@ -1,113 +1,65 @@
-import React from "react";
-import { Button, DatePicker, Form, Input, InputNumber, Select } from "antd";
-import "../styles/cadastro.css";
-
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 6,
-    },
-  },
-  wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 14,
-    },
-  },
-};
-
-const typeGender = [
-{ genero: 'Masculino', value: 1 },
-{ genero: 'Feminino', value: 2 }
-]
+import React, { useState } from 'react';
+import '../styles/cadastro.css';
+import Listagem from './Listagem';
 
 const Cadastro = () => {
+  const [form, setForm] = useState({ nome: '', cpf: '', idade: '' });
+  const [lista, setLista] = useState([]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLista((prevLista) => [...prevLista, form]);
+    setForm({ nome: '', cpf: '', idade: '' });
+  };
+
   return (
-    <div>
-      <div className="container">
-        <h2 className="txt-cadastro">Faça seu Cadastro</h2>
-
-        <div className="container-cadastro">
-          <Form
-            {...formItemLayout}
-            variant="filled"
-          >
-            <Form.Item
-              label="Nome"
+    <div className='container-principal'>
+      <div className='container-cadastro'>
+        <h1>Cadastro de Usuários</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Nome:</label>
+            <input
+              type="text"
               name="nome"
-              rules={[
-                {
-                  required: true,
-                  message: "Campo obrigatório!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
-              label="Idade"
+              value={form.nome}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>CPF:</label>
+            <input
+              type="text"
+              name="cpf"
+              value={form.cpf}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label>Idade:</label>
+            <input
+              type="number"
               name="idade"
-              rules={[
-                {
-                  required: true,
-                  message: "Campo obrigatório!",
-                },
-              ]}
-            >
-              <InputNumber
-                style={{
-                  width: "100%",
-                }}
-              />
-            </Form.Item>
-
-            <Form.Item
-              label="Gênero"
-              name="gênero"
-              o
-              rules={[
-                {
-                  required: true,
-                  message: "Campo obrigatório!",
-                },
-              ]}
-            >
-              <Select options={typeGender.genero}/>
-            </Form.Item>
-
-            <Form.Item
-              label="Aniversário"
-              name="aniversário"
-              
-              rules={[
-                {
-                  required: true,
-                  message: "Campo obrigatório!",
-                },
-              ]}
-            >
-              <DatePicker  />
-            </Form.Item>
-
-            <Form.Item
-              wrapperCol={{
-                offset: 6,
-                span: 16,
-              }}
-            >
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Form.Item>
-          </Form>
-        </div>
+              value={form.idade}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit">Adicionar</button>
+        </form>
       </div>
+
+      <Listagem lista={lista}/>
     </div>
   );
 };

@@ -1,11 +1,25 @@
-import React from 'react'
+import React from 'react';
+import '../styles/listagem.css';
 
-const Listagem = () => {
+const Listagem = ({ lista }) => {
   return (
-    <div>
-        <h1>listagem</h1>
+    <div className='lista-usuarios-container'>
+      <div className='lista-usuarios'>
+        <h2>Lista de Usuários</h2>
+        <ul>
+          {lista.map((item, index) => (
+            <li key={index}>
+              <div className='item-info'>
+                <span><strong>Nome:</strong> {item.nome}</span>
+                <span><strong>CPF:</strong> {item.cpf}</span>
+                <span><strong>Idade:</strong> {item.idade}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Listagem
+export default Listagem;
