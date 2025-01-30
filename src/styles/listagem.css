@@ -1,57 +1,88 @@
 .lista-usuarios-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #505050;
-    width: 100%;
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.lista-usuarios {
+  width: 100%;
+  max-width: 600px; 
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lista-usuarios h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.lista-usuarios ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-usuarios li {
+  padding: 16px;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 12px;
+  transition: background 0.3s ease-in-out;
+}
+
+.lista-usuarios li:hover {
+  background-color: #f1f1f1;
+}
+
+.lista-usuarios .item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 6px;
+}
+
+.lista-usuarios .item-info span {
+  display: block;
+  font-size: 14px;
+}
+
+.delete-icon{
+  /* FAZER O DELETE DO ITEM */
+}
+
+.arrow-return{
+  font-weight: 400;
+  font-size: 16px;
+  margin: 15px 0 0 20px;
+}
+.arrow-return:hover{
+  color: #4496d4;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .lista-usuarios-container {
+      padding: 10px;
   }
-  
+
   .lista-usuarios {
-    width: 100%;
-    max-width: 600px; 
-    padding: 20px;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 90%;
   }
-  
-  .lista-usuarios h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-    text-align: center;
-  }
-  
-  .lista-usuarios ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
+
   .lista-usuarios li {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px;
-    color: #333;
+      flex-direction: column;
+      align-items: flex-start;
   }
-  
-  .lista-usuarios li:last-child {
-    border-bottom: none;
-  }
-  
-  .lista-usuarios .item-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-  }
-  
-  .lista-usuarios .item-info span {
-    display: block;
-  }
-  
+}

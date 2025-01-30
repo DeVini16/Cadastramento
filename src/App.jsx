@@ -6,7 +6,7 @@ function App() {
   return (
       <Routes>
         <Route path="/" element={<Cadastro />} />
-        <Route path="/lista" element={<Listagem />} />
+        <Route path="/usuarios" element={<Listagem />} />
       </Routes>
   );
 }
